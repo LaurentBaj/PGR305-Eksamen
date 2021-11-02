@@ -1,18 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { MonsterProvider } from "./contexts/MonsterContext"
-import MonsterList from './components/Monster/MonsterList';
+import "./App.css";
+import { ArtistProvider } from "./contexts/ArtistContext";
+import ArtistList from "./components/Artist/ArtistList";
 
 function App() {
   return (
     <div>
-      <h1>Monstersiden</h1>
-      <MonsterProvider>
-        <MonsterList>
-          <MonsterList />
-        </MonsterList>
-      </MonsterProvider>
+      <h1>Artist Page</h1>
+      <ArtistProvider>
+        <ArtistList />
+      </ArtistProvider>
     </div>
   );
 }
