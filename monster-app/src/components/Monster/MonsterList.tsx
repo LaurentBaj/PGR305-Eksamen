@@ -9,16 +9,18 @@ const MonsterList: FC = () => {
     const {monsters} = useContext(MonsterContext) as MonsterContextType;
 
     const createMonsterList = () => {
-        return monsters.map( ( monster: IMonster, key: number ) => {
+        return monsters.map( (monster: IMonster, key:number) => {
             return (
-                <MonsterItem 
-                    key={key}
-                    id={monster.id}
-                    name={monster.name}
-                    image={monster.image}
-                />
+                <>
+                    <MonsterItem
+                        key={key}
+                        id={monster.id}
+                        name={monster.name}
+                        image={monster.image} 
+                    />
+                </>
             )
-        } );
+        })
     }
 
     return (

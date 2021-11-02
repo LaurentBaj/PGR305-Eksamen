@@ -18,17 +18,15 @@ namespace MonsterApi.Services
 
         public List<Monster> GetMonsters()
         {
-            return _monsters.Find( monster => true ).ToList();
+            return _monsters.Find( monster => true).ToList(); 
         }
 
         public Monster PostMonster(Monster newMonster)
         {
             // Fin anledning til å bruke try catch
-            _monsters.InsertOne( newMonster );
-            return newMonster;
+            _monsters.InsertOne(newMonster);
+            return newMonster;  
         }
-
-
 
     }
 

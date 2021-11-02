@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rogo001\\Desktop\\MonsterApi\\MonsterApi.csproj": {}
+    "/home/laurent/Work/Webutvikling-3/Lecture10/MonsterApi/MonsterApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rogo001\\Desktop\\MonsterApi\\MonsterApi.csproj": {
+    "/home/laurent/Work/Webutvikling-3/Lecture10/MonsterApi/MonsterApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rogo001\\Desktop\\MonsterApi\\MonsterApi.csproj",
+        "projectUniqueName": "/home/laurent/Work/Webutvikling-3/Lecture10/MonsterApi/MonsterApi.csproj",
         "projectName": "MonsterApi",
-        "projectPath": "C:\\Users\\rogo001\\Desktop\\MonsterApi\\MonsterApi.csproj",
-        "packagesPath": "C:\\Users\\rogo001\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rogo001\\Desktop\\MonsterApi\\obj\\",
+        "projectPath": "/home/laurent/Work/Webutvikling-3/Lecture10/MonsterApi/MonsterApi.csproj",
+        "packagesPath": "/home/laurent/.nuget/packages/",
+        "outputPath": "/home/laurent/Work/Webutvikling-3/Lecture10/MonsterApi/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\rogo001\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/laurent/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -68,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }

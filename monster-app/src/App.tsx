@@ -1,5 +1,7 @@
 import React from 'react';
-import { MonsterProvider } from './contexts/MonsterContext';
+import logo from './logo.svg';
+import './App.css';
+import { MonsterProvider } from "./contexts/MonsterContext"
 import MonsterList from './components/Monster/MonsterList';
 
 function App() {
@@ -7,7 +9,9 @@ function App() {
     <div>
       <h1>Monstersiden</h1>
       <MonsterProvider>
-        <MonsterList></MonsterList>
+        <MonsterList>
+          <MonsterList />
+        </MonsterList>
       </MonsterProvider>
     </div>
   );

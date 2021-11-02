@@ -1,6 +1,6 @@
 namespace MonsterApi.Interfaces 
 {
-    public interface IMonster
+    public interface IMonster 
     {
         string Id { get; set; }
         string Name { get; set; }

@@ -12,9 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-using Microsoft.Extensions.Options;
-using MonsterApi.Models;
-using MonsterApi.Services;
+using MonsterApi.Services; 
+using MonsterApi.Models; 
+using Microsoft.Extensions.Options; 
+
 
 namespace MonsterApi
 {
@@ -57,6 +58,7 @@ namespace MonsterApi
                     );
                 }
             );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,19 +71,18 @@ namespace MonsterApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MonsterApi v1"));
             }
 
-            // Todo: legge til DefaultFilesOptions, UseDefaultFiles, UseStaticFiles
-
+            // Bruk index.html i root 
             DefaultFilesOptions newOptions = new DefaultFilesOptions();
             newOptions.DefaultFileNames.Append("index.html");
             app.UseDefaultFiles(newOptions);
 
-            app.UseStaticFiles();
-
-            app.UseCors("AllowAny");
+            app.UseStaticFiles(); 
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAny");
 
             app.UseAuthorization();
 
