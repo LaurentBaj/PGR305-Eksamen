@@ -1,14 +1,10 @@
-import "./App.css";
-import { ArtistProvider } from "./contexts/ArtistContext";
-import ArtistList from "./components/Artist/ArtistList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Routing from "./routing/Routing";
 
 function App() {
   return (
     <div>
-      <h1>Artist Page</h1>
-      <ArtistProvider>
-        <ArtistList />
-      </ArtistProvider>
+      <Routing />
     </div>
   );
 }
