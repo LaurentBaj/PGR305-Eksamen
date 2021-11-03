@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj": {}
+    "/home/laurent/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj": {}
   },
   "projects": {
-    "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj": {
+    "/home/laurent/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj",
+        "projectUniqueName": "/home/laurent/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj",
         "projectName": "ArtistApi",
-        "projectPath": "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj",
-        "packagesPath": "/Users/henrikbrathen/.nuget/packages/",
-        "outputPath": "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/obj/",
+        "projectPath": "/home/laurent/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj",
+        "packagesPath": "/home/laurent/.nuget/packages/",
+        "outputPath": "/home/laurent/Desktop/PGR305-Eksamen/ArtistApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/henrikbrathen/.nuget/NuGet/NuGet.Config"
+          "/home/laurent/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -65,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
