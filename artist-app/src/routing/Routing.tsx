@@ -4,8 +4,8 @@ import { Container } from "react-bootstrap";
 import Home from "../pages/Home";
 import Artist from "../pages/Artist";
 import About from "../pages/About";
+import {ArtistView} from "../pages/ArtistView"
 import NavigationBar from "../components/shared/NavigationBar";
-import { ArtistDetail } from "../pages/ArtistDetail";
 import { NotFound } from "../pages/NotFound";
 import {ArtistProvider} from "../contexts/ArtistContext";
 
@@ -19,7 +19,7 @@ const Routing: FC = () => {
             <Route exact path="/artists" component={Artist} />
             <Route path="/about" component={About} />
             <ArtistProvider>
-                <Route path={`/artists/:name`} component={ArtistDetail} />
+                <Route path={`/artists/:name`} component={ArtistView} />
             </ArtistProvider>
             <Route component={NotFound} />
         </Switch>
