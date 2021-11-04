@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/laurent/Desktop/PGR305-Eksamen/MonsterApi/MonsterApi.csproj",
+  "FilePath": "/Users/henrikbrathen/Desktop/PGR305-Eksamen/ArtistApi/ArtistApi.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15616,7 +15616,7 @@
     ],
     "CSharpLanguageVersion": 900
   },
-  "RootNamespace": "MonsterApi",
+  "RootNamespace": "ArtistApi",
   "Documents": [],
   "SerializationFormat": "0.2"
 }
