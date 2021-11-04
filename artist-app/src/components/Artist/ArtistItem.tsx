@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { IArtist } from "../../interfaces/IArtist";
 
 const ArtistItem: FC<IArtist> = ({ id, name, description }) => {
