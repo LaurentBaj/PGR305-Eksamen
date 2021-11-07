@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = ArtistApi
-build_property.ProjectDir = /home/laurent/Desktop/PGR305-Eksamen/ArtistApi/
+build_property.ProjectDir = /Users/henrikbrathen/Dev/Eksamen/PGR305-Eksamen/ArtistApi/
