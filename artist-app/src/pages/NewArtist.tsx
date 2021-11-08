@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ArtistForm from "../components/shared/ArtistForm";
+import ArtistForm from "../components/Artist/ArtistForm";
 
 const NewArtist: FC = () => {
   return (
