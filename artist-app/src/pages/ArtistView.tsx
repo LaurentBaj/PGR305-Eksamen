@@ -9,7 +9,6 @@ export const ArtistView: FC = () => {
   const { artists } = useContext(ArtistContext) as ArtistContextType;
   const [artist] = useState(artists.find((a) => a.name === name))
 
-  
   return (
     <Container>
       <Row>
