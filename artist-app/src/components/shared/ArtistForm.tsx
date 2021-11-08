@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const ArtistForm: FC = () => {
   return (

@@ -17,10 +17,10 @@ const Routing: FC = () => {
       <Container>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/artists" component={Artist} />
           <Route path="/about" component={About} />
           <Route path="/newArtist" component={NewArtist} />
           <ArtistProvider>
+            <Route exact path="/artists" component={Artist} />
             <Route path={`/artists/:name`} component={ArtistView} />
           </ArtistProvider>
           <Route component={NotFound} />
