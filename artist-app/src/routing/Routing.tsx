@@ -18,8 +18,8 @@ const Routing: FC = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/newArtist" component={NewArtist} />
           <ArtistProvider>
+            <Route path="/newArtist" component={NewArtist} />
             <Route exact path="/artists" component={Artist} />
             <Route path={`/artists/:name`} component={ArtistView} />
           </ArtistProvider>

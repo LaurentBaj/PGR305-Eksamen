@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Form, Row, Col} from "react-bootstrap";
+import { Genre } from "./Genre";
 
 const ArtistForm: FC = () => {
   return (
     <>
+      <h1>New Artist</h1>
       <Form>
       <Form.Group className="mb-3" >
         <Form.Label>Artist Name: </Form.Label>
@@ -17,12 +19,9 @@ const ArtistForm: FC = () => {
       <Row>
         <Col>
           <Form.Select>
-            <option>Genre</option>
-            <option>Rock</option>
-            <option>Jazz</option>
-            <option>Classical</option>
-            <option>Rap</option>
-            <option>Hip Hop</option>
+            {Object.keys(Genre).map((i) => (
+              <option>{i}</option>
+            ))}
         </Form.Select>
         </Col>
         <Col>
