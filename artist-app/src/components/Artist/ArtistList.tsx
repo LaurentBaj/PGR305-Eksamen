@@ -19,7 +19,10 @@ const ArtistList: FC = () => {
       return (
         <>
           <Col className="mb-3" xs={12} sm={6} md={4} lg={3} key={key}>
-            <Link to={`/artists/${artist.name}`}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/artists/${artist.name}`}
+            >
               <ArtistItem
                 key={key}
                 id={artist.id}
