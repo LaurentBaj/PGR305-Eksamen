@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 const Artist: FC = () => {
   return (
     <>
-      <h1>Artist</h1>
+      <h1 className="text-center pt-3">All artists</h1>
       <Link to="/newartist">
         <Button variant="primary">New Artist</Button>
       </Link>

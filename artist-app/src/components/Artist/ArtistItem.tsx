@@ -21,7 +21,15 @@ const ArtistItem: FC<IArtist> = ({ id, name, image, description }) => {
         />
       )}
       <Card.Body>
-        <Card.Title className={"text-center pt-3"}>{name}</Card.Title>
+        <Card.Title style={{ color: "black" }} className={"text-center pt-2"}>
+          {name}
+        </Card.Title>
+        <Card.Subtitle
+          style={{ fontSize: "80%", color: "gray" }}
+          className={"text-center"}
+        >
+          Click me to read more
+        </Card.Subtitle>
       </Card.Body>
     </Card>
   );
