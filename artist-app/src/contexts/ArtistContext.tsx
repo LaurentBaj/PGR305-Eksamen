@@ -6,9 +6,8 @@ import { ArtistService } from "../services/ArtistService";
 export const ArtistContext = createContext<ArtistContextType | null>(null);
 
 export const ArtistProvider: FC = ({ children }) => {
-  const [artists, setArtists] = useState<IArtist[]>([
-    { id: "test", name: "Test Artist", description: "Test Description" },
-  ]);
+  const [artists, setArtists] = useState<IArtist[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArtists();
@@ -16,12 +15,13 @@ export const ArtistProvider: FC = ({ children }) => {
 
   const getArtists = async () => {
     const _artists = await ArtistService.getAll();
+    setLoading(false);
     setArtists(_artists);
   };
 
   return (
     <>
-      <ArtistContext.Provider value={{ artists: artists }}>
+      <ArtistContext.Provider value={{ artists, loading }}>
         {children}
       </ArtistContext.Provider>
     </>

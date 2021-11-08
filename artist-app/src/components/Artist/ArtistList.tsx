@@ -5,11 +5,16 @@ import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { Link } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 const ArtistList: FC = () => {
-  const { artists } = useContext(ArtistContext) as ArtistContextType;
+  const { artists, loading } = useContext(ArtistContext) as ArtistContextType;
 
   const createArtistList = () => {
+    if (loading) {
+      return <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />;
+    }
     return artists.map((artist: IArtist, key: number) => {
       return (
         <>
