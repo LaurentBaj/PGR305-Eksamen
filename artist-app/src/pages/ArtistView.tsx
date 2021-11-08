@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ArtistContext } from "../contexts/ArtistContext";
 import { ArtistContextType } from "../types/ArtistContextType";
@@ -7,7 +7,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 export const ArtistView: FC = () => {
   const { name } = useParams<{ name: string }>();
   const { artists } = useContext(ArtistContext) as ArtistContextType;
-  const artist = artists.find((a) => a.name === name);
+  const [artist] = useState(artists.find((a) => a.name === name))
 
   return (
     <Container>
