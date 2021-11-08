@@ -19,6 +19,9 @@ const ArtistForm: FC = () => {
       case "name":
         setNewArtist({ ...newArtist, name: value });
         break;
+      case "description":
+        setNewArtist({ ...newArtist, description: value });
+        break;
       case "image":
         if (files) {
           setNewArtist({ ...newArtist, image: files[0].name });
