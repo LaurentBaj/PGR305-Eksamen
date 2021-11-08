@@ -8,7 +8,7 @@ const ArtistForm: FC = () => {
   const [newArtist, setNewArtist] = useState<IArtist>({
     name: "",
     description: "",
-    // image: "",
+    image: "",
   });
   const [newImage, setNewImage] = useState<File>();
 
@@ -41,10 +41,20 @@ const ArtistForm: FC = () => {
     <>
       <h1>New Artist</h1>
       <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Artist Name: </Form.Label>
-          <Form.Control name="name" onChange={handleChange} type="text" />
-        </Form.Group>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Artist Name: </Form.Label>
+              <Form.Control name="name" onChange={handleChange} type="text" />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Default file input example</Form.Label>
+              <Form.Control name="image" onChange={handleChange} type="file" />
+            </Form.Group>
+          </Col>
+        </Row>
         <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
           <Form.Control
