@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
 import { Form, Row, Col} from "react-bootstrap";
+import { IArtist } from "../../interfaces/IArtist";
 import { Genre } from "./Genre";
 
-const ArtistForm: FC = () => {
+const ArtistForm: FC= () => {
   return (
     <>
       <h1>New Artist</h1>
