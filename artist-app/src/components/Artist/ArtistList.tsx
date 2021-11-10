@@ -12,7 +12,11 @@ const ArtistList: FC = () => {
 
   const createArtistList = () => {
     if (loading) {
-      return <LoadingSpinner />;
+      return (
+        <Col className="text-center">
+          <LoadingSpinner />
+        </Col>
+      );
     }
     return artists.map((artist: IArtist, key: number) => {
       return (
