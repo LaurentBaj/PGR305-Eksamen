@@ -7,7 +7,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 export const ArtistView: FC = () => {
   const { name } = useParams<{ name: string }>();
   const { artists } = useContext(ArtistContext) as ArtistContextType;
-  const [artist] = useState(artists.find((a) => a.name === name))
+  const [artist] = useState(artists.find((a) => a.name === name));
 
   return (
     <Container>

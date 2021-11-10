@@ -5,7 +5,6 @@ import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { Link } from "react-router-dom";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LoadingSpinner from "../shared/LoadingSpinner";
 
 const ArtistList: FC = () => {
