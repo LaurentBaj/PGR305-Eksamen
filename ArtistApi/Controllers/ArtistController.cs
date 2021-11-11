@@ -10,39 +10,23 @@ namespace ArtistApi.Controllers
     [Route("[controller]")]
     public class ArtistController : ControllerBase
     {
-        private readonly ArtistService artistService; 
+        private readonly ArtistService _artistService; 
 
-        public ArtistController(ArtistService _artistService)
+        public ArtistController(ArtistService artistService)
         {
-            artistService = _artistService; 
+            _artistService = artistService; 
         }    
 
         [HttpGet]
         public IEnumerable<Artist> GetArtists()
         {
-            return artistService.GetArtists();  
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Artist> GetArtist(string id)
-        {
-            Artist artist = artistService.GetArtist(id);
-
-            if(artist != null)
-            {  
-                return artist;
-            }
-            else
-            {
-                return NotFound();
-            }
+            return _artistService.GetArtists();  
         }
 
         [HttpPost]
         public Artist PostArtist(Artist newArtist)
         {
-            artistService.PostArtist(newArtist); 
-            return newArtist; 
+            return _artistService.PostArtist(newArtist);  
         }
     }
 
