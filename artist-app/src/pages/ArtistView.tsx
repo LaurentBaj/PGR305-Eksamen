@@ -45,6 +45,7 @@ export const ArtistView: FC = () => {
           <p>{artist?.description}</p>
         </Col>
       </Row>
+      <h3>{artist?.genre as string}</h3>
     </>
   );
 };

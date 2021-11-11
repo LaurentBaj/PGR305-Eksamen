@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
