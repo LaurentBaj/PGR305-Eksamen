@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { ArtistContext } from "../contexts/ArtistContext";
 import { ArtistContextType } from "../types/ArtistContextType";
 import { Col, Image, Row } from "react-bootstrap";
-import styles from "../styles/card-styles.module.css";
 
 export const ArtistView: FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -15,7 +14,7 @@ export const ArtistView: FC = () => {
     if (artist?.image) {
       return (
         <Image
-          className={styles.layeredbox}
+          className={"layeredbox"}
           style={{ maxWidth: "20rem" }}
           src={`https://localhost:5001/images/${artist.image}`}
         />
@@ -23,6 +22,7 @@ export const ArtistView: FC = () => {
     } else {
       return (
         <Image
+          className={"layeredbox"}
           style={{ maxWidth: "20rem" }}
           src={`https://localhost:5001/images/user_placeholder.png`}
         />
