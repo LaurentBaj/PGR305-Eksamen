@@ -21,11 +21,6 @@ namespace ArtistApi.Services
             return _artist.Find( Artist => true).ToList(); 
         }
 
-        public Artist GetArtist(string id)
-        {
-            return _artist.Find(a => a.Id == id).Single();
-        }
-
         public Artist PostArtist(Artist newArtist)
         {
             // Fin anledning til å bruke try catch
