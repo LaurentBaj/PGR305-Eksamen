@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
-import { Genre } from "./Genre";
+import { Genre } from "../shared/Genre";
 
 const ArtistForm: FC = () => {
   const [newArtist, setNewArtist] = useState<IArtist>({

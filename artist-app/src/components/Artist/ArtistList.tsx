@@ -1,20 +1,31 @@
 import { FC, useContext } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const ArtistList: FC = () => {
-  const { artists } = useContext(ArtistContext) as ArtistContextType;
+  const { artists, loading } = useContext(ArtistContext) as ArtistContextType;
 
   const createArtistList = () => {
+    if (loading) {
+      return (
+        <Col className="text-center">
+          <LoadingSpinner />
+        </Col>
+      );
+    }
     return artists.map((artist: IArtist, key: number) => {
       return (
         <>
           <Col className="mb-3" xs={12} sm={6} md={4} lg={3} key={key}>
-            <Link to={`/artists/${artist.name}`}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/artists/${artist.name}`}
+            >
               <ArtistItem
                 key={key}
                 id={artist.id}
