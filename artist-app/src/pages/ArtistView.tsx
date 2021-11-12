@@ -11,29 +11,21 @@ export const ArtistView: FC = () => {
 
   // check if artists contains a image
   const containsImage = () => {
-    if (artist?.image) {
-      return (
-        <Image
-          className={"layeredbox"}
-          style={{ maxWidth: "20rem" }}
-          src={`https://localhost:5001/images/${artist.image}`}
-        />
-      );
-    } else {
-      return (
-        <Image
-          className={"layeredbox"}
-          style={{ maxWidth: "20rem" }}
-          src={`https://localhost:5001/images/user_placeholder.png`}
-        />
-      );
-    }
+    return artist?.image
+      ? `https://localhost:5001/images/${artist.image}`
+      : `https://localhost:5001/images/user_placeholder.png`;
   };
 
   return (
     <>
       <Row className="m-5 text-center">
-        <Col>{containsImage()}</Col>
+        <Col>
+          <Image
+            className={"layeredbox"}
+            style={{ maxWidth: "20rem" }}
+            src={containsImage()}
+          />
+        </Col>
       </Row>
       <Row>
         <h1>{artist?.name}</h1>
