@@ -28,6 +28,17 @@ namespace ArtistApi.Services
             return newArtist;  
         }
 
+        public Artist GetOne(string id)
+        {
+            return _artist.Find(a => a.Id == id).Single();
+        }
+
+        public Artist DeleteArtist(string id)
+        {
+            return _artist.FindOneAndDelete(a => a.Id == id);
+        }
+
+
     }
 
 }
