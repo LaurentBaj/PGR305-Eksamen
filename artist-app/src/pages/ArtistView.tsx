@@ -36,14 +36,12 @@ export const ArtistView: FC = () => {
         <Col>{containsImage()}</Col>
       </Row>
       <Row>
-        <Col>
-          <h1>{artist?.name}</h1>
-        </Col>
+        <h1>{artist?.name}</h1>
+        <p>{artist?.description}</p>
       </Row>
       <Row>
-        <Col>
-          <p>{artist?.description}</p>
-        </Col>
+        <h2>Albums</h2>
+        <p>There are currently no albums. Want to add one?</p>
       </Row>
     </>
   );
