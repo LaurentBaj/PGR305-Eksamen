@@ -28,6 +28,33 @@ namespace ArtistApi.Controllers
         {
             return _artistService.PostArtist(newArtist);  
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Artist> GetOne(string id)
+        {
+            Artist artist = _artistService.GetOne(id);
+
+            if (artist == null)
+            {
+                return NotFound();
+            }
+            
+            return artist;
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteArtist(string id)
+        {
+            Artist artist = _artistService.GetOne(id);
+
+            if (artist == null)
+            {
+                return NotFound();
+            }
+
+            _artistService.DeleteArtist(id);
+            return NoContent();
+        }
     }
 
 }
