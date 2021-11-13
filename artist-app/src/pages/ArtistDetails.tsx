@@ -4,7 +4,7 @@ import { ArtistContext } from "../contexts/ArtistContext";
 import { ArtistContextType } from "../types/ArtistContextType";
 import { Col, Image, Row } from "react-bootstrap";
 
-export const ArtistView: FC = () => {
+export const ArtistDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { artists } = useContext(ArtistContext) as ArtistContextType;
   const [artist] = useState(artists.find((artist) => artist.id === id));
