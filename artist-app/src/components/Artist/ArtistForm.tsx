@@ -11,7 +11,7 @@ const ArtistForm: FC = () => {
     description: "",
     image: "",
     dateOfBirth: new Date(),
-
+    genre: Genre.Pop
   });
   const [newImage, setNewImage] = useState<File>();
   const history = useHistory()
@@ -31,6 +31,10 @@ const ArtistForm: FC = () => {
           setNewArtist({ ...newArtist, image: files[0].name });
           setNewImage(files[0]);
         }
+        break;
+      case "genre":
+        setNewArtist({ ...newArtist, genre: value as Genre.Classic })
+        console.log(newArtist.genre)
         break;
     }
   };

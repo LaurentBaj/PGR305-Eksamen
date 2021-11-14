@@ -32,6 +32,7 @@ export const ArtistView: FC = () => {
 
   return (
     <>
+      {console.log(artist?.genre)}
       <Row className="m-5 text-center">
         <Col>{containsImage()}</Col>
       </Row>
