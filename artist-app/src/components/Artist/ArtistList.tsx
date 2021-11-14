@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
@@ -24,7 +24,7 @@ const ArtistList: FC = () => {
           <Col className="mb-3" xs={12} sm={6} md={4} lg={3} key={key}>
             <Link
               style={{ textDecoration: "none" }}
-              to={`/artists/${artist.name}`}
+              to={`/artist-details/${artist.id}`}
             >
               <ArtistItem
                 key={key}
