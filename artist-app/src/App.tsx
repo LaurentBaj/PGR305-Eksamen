@@ -1,11 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ArtistProvider } from "./contexts/ArtistContext";
 import Routing from "./routing/Routing";
 import "./styles.css";
 
 function App() {
   return (
     <div>
-      <Routing />
+      <ArtistProvider>
+        <Routing />
+      </ArtistProvider>
     </div>
   );
 }

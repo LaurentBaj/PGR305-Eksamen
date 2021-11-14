@@ -11,7 +11,7 @@ export const ArtistProvider: FC = ({ children }) => {
 
   useEffect(() => {
     getArtists();
-  }, [artists]);
+  }, []);
 
   const getArtists = async () => {
     const _artists = await ArtistService.getAll();
