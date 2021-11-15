@@ -23,8 +23,13 @@ export const ArtistService = (function () {
     });
   };
 
+  const deleteArtist = (id: string) => {
+    axios.delete(urlToArtistController.concat("/" + id))
+  }
+
   return {
     getAll,
     postNewArtist,
+    deleteArtist
   };
 })();
