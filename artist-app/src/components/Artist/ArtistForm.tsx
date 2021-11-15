@@ -3,14 +3,18 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "../shared/Genre";
+import { useHistory } from "react-router";
 
 const ArtistForm: FC = () => {
   const [newArtist, setNewArtist] = useState<IArtist>({
     name: "",
     description: "",
     image: "",
+    dateOfBirth: new Date(),
+    genre: Genre.Pop
   });
   const [newImage, setNewImage] = useState<File>();
+  const history = useHistory()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name, value, files } = event.target;
@@ -28,6 +32,10 @@ const ArtistForm: FC = () => {
           setNewImage(files[0]);
         }
         break;
+      case "genre":
+        setNewArtist({ ...newArtist, genre: value as Genre.Classic })
+        console.log(newArtist.genre)
+        break;
     }
   };
 
@@ -35,6 +43,7 @@ const ArtistForm: FC = () => {
     console.log(newArtist);
     console.log(newImage);
     ArtistService.postNewArtist(newArtist, newImage as File);
+    history.push("/artists")
   };
 
   return (
@@ -67,14 +76,14 @@ const ArtistForm: FC = () => {
         <br></br>
         <Row>
           <Col>
-            <Form.Select>
+            <Form.Select name="genre">
               {Object.keys(Genre).map((i) => (
                 <option>{i}</option>
               ))}
             </Form.Select>
           </Col>
           <Col>
-            <Form.Control placeholder="Date of birth" />
+            <Form.Control name="date" placeholder="Date of birth" />
           </Col>
         </Row>
       </Form>
