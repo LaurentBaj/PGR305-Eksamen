@@ -14,19 +14,16 @@ export const EditArtist: FC = () => {
 
     return (
         <div>
-            <h1>{artist?.name}</h1>
+            <EditArtistForm
+                name={artist?.name as string}
+                description={artist?.description as string}
+            />
         </div>
     )
 }
 
 
 /*
- <EditArtistForm
-                name={artist?.name as string}
-                description={artist?.description as string}
-                genre={artist?.genre as Genre}
-                image={artist?.image}
-                album={artist?.album}
-            />
+
 
 */

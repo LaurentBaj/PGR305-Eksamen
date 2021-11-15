@@ -4,7 +4,7 @@ import { IArtist } from "../../interfaces/IArtist";
 
 import { Genre } from "../shared/Genre";
 
-export const EditArtistForm: FC<IArtist> = ({ name, description, image, dateOfBirth, album, genre }) => {
+export const EditArtistForm: FC<IArtist> = ({ name, description }) => {
 
   return (
     <>
@@ -20,7 +20,7 @@ export const EditArtistForm: FC<IArtist> = ({ name, description, image, dateOfBi
           <Col>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Default file input example</Form.Label>
-              <Form.Control value={image} name="image" type="file" />
+              <Form.Control name="image" type="file" />
             </Form.Group>
           </Col>
         </Row>
