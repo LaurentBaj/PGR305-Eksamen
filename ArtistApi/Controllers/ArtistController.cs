@@ -57,6 +57,21 @@ namespace ArtistApi.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateArtist(string id, Artist artistIn)
+        {
+            Artist artist = _artistService.GetOne(id);
+
+            if (artist == null)
+            {
+                return NotFound();
+            }
+
+            _artistService.UpdateArtist(id, artistIn);
+            return NoContent();
+        }
+
+
     }
 
 }

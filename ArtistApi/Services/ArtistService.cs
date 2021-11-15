@@ -34,9 +34,14 @@ namespace ArtistApi.Services
             return _artist.Find(a => a.Id == id).Single();
         }
 
-        public Artist DeleteArtist(string id)
+        public void DeleteArtist(string id)
         {
-            return _artist.FindOneAndDelete(a => a.Id == id);
+            _artist.FindOneAndDelete(a => a.Id == id);
+        }
+
+        public void UpdateArtist(string id, Artist artistIn)
+        {
+            _artist.FindOneAndReplace(artist => artist.Id == artistIn.Id, artistIn);
         }
 
     }
