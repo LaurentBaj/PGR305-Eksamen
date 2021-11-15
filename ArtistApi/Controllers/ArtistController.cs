@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using ArtistApi.Models; 
-using System.Collections.Generic; 
-using ArtistApi.Services;  
+using ArtistApi.Models;
+using System.Collections.Generic;
+using ArtistApi.Services;
+using ArtistApi.Interfaces;
 
 namespace ArtistApi.Controllers
 {
@@ -10,23 +11,23 @@ namespace ArtistApi.Controllers
     [Route("[controller]")]
     public class ArtistController : ControllerBase
     {
-        private readonly ArtistService _artistService; 
+        private readonly ArtistService _artistService;
 
         public ArtistController(ArtistService artistService)
         {
-            _artistService = artistService; 
-        }    
+            _artistService = artistService;
+        }
 
         [HttpGet]
         public IEnumerable<Artist> GetArtists()
         {
-            return _artistService.GetArtists();  
+            return _artistService.GetArtists();
         }
 
         [HttpPost]
         public Artist PostArtist(Artist newArtist)
         {
-            return _artistService.PostArtist(newArtist);  
+            return _artistService.PostArtist(newArtist);
         }
 
         [HttpGet("{id}")]
@@ -38,7 +39,7 @@ namespace ArtistApi.Controllers
             {
                 return NotFound();
             }
-            
+
             return artist;
         }
 
@@ -55,6 +56,7 @@ namespace ArtistApi.Controllers
             _artistService.DeleteArtist(id);
             return NoContent();
         }
+
     }
 
 }
