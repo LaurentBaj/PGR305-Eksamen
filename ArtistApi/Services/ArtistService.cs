@@ -2,6 +2,7 @@ using MongoDB.Driver;
 using ArtistApi.Models;
 using System.Collections.Generic;
 using System.Linq;
+using ArtistApi.Interfaces;
 
 namespace ArtistApi.Services
 {
@@ -11,21 +12,21 @@ namespace ArtistApi.Services
 
         public ArtistService(IArtistDatabaseSettings settings)
         {
-            var client = new MongoClient( settings.ConnectionString );
-            var database = client.GetDatabase( settings.DatabaseName );
-            _artist = database.GetCollection<Artist>( settings.ArtistCollectionName );
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+            _artist = database.GetCollection<Artist>(settings.ArtistCollectionName);
         }
 
         public List<Artist> GetArtists()
         {
-            return _artist.Find( Artist => true).ToList(); 
+            return _artist.Find(Artist => true).ToList();
         }
 
         public Artist PostArtist(Artist newArtist)
         {
             // Fin anledning til å bruke try catch
             _artist.InsertOne(newArtist);
-            return newArtist;  
+            return newArtist;
         }
 
         public Artist GetOne(string id)
@@ -33,11 +34,15 @@ namespace ArtistApi.Services
             return _artist.Find(a => a.Id == id).Single();
         }
 
-        public Artist DeleteArtist(string id)
+        public void DeleteArtist(string id)
         {
-            return _artist.FindOneAndDelete(a => a.Id == id);
+            _artist.FindOneAndDelete(a => a.Id == id);
         }
 
+        public void UpdateArtist(string id, Artist artistIn)
+        {
+            _artist.FindOneAndReplace(artist => artist.Id == artistIn.Id, artistIn);
+        }
 
     }
 

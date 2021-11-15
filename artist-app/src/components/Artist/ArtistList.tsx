@@ -18,6 +18,7 @@ const ArtistList: FC = () => {
         </Col>
       );
     }
+
     return artists.map((artist: IArtist, key: number) => {
       return (
         <>

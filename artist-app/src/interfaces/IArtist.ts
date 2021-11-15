@@ -9,4 +9,5 @@ export interface IArtist {
   dateOfBirth?: Date;
   genre?: Genre;
   album?: IAlbum[];
+  action?: string;
 }
