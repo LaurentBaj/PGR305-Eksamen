@@ -34,6 +34,7 @@ export const ArtistService = (function () {
   return {
     getAll,
     postNewArtist,
-    deleteArtist
+    deleteArtist,
+    updateArtist
   };
 })();
