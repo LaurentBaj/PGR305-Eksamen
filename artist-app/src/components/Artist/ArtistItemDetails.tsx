@@ -46,6 +46,7 @@ export const ArtistItemDetails: FC = () => {
         <h2>Albums</h2>
         <p>There are currently no albums. Want to add one?</p>
       </Row>
+      <Button onClick={() => history.push(`/artist-edit/${artist?.id}`)} variant="warning" >Edit Artist</Button>
     </>
   );
 };

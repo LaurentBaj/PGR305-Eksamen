@@ -27,6 +27,10 @@ export const ArtistService = (function () {
     axios.delete(urlToArtistController.concat("/" + id))
   }
 
+  const updateArtist = (artist: IArtist) => {
+    axios.put(urlToArtistController.concat("/" + artist.id), artist)
+  }
+
   return {
     getAll,
     postNewArtist,

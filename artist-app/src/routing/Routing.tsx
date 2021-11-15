@@ -8,6 +8,7 @@ import { ArtistDetails } from "../pages/ArtistDetails";
 import NavigationBar from "../components/shared/NavigationBar";
 import { NotFound } from "../pages/NotFound";
 import NewArtist from "../pages/NewArtist";
+import { EditArtistForm } from "../components/Artist/EditArtistForm";
 
 const Routing: FC = () => {
   return (
@@ -20,6 +21,7 @@ const Routing: FC = () => {
           <Route path="/artists" component={Artist} />
           <Route path="/newArtist" component={NewArtist} />
           <Route path={`/artist-details/:id`} component={ArtistDetails} />
+          <Route path={`/artist-edit/:id`} component={EditArtistForm} />
           <Route component={NotFound} />
         </Switch>
       </Container>
