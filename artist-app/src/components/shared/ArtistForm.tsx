@@ -1,15 +1,18 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { useHistory } from "react-router";
 import { Form, Row, Col } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
-import { Genre } from "../shared/Genre";
+import { Genre } from "./Genre";
 
-export const EditArtistForm: FC<IArtist> = ({ id, name, description, action, image }) => {
-  const [_name, _setName] = useState(name)
-  const [_description, _setDescription] = useState(description)
+export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }) => {
   const artist = { id, name, description, image }
   const history = useHistory()
+
+  const [_name, _setName] = useState(name)
+  const [_description, _setDescription] = useState(description)
+  const [_image, _setImage] = useState(image)
+
 
   const handleForm = () => {
     artist.name = _name
@@ -45,7 +48,7 @@ export const EditArtistForm: FC<IArtist> = ({ id, name, description, action, ima
         </Row>
         <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
-          <Form.Control value={_description} onChange={e => _setName(e.target.value)} as="textarea" rows={3}
+          <Form.Control value={_description} onChange={e => _setDescription(e.target.value)} as="textarea" rows={3}
           />
         </Form.Group>
         <br></br>
