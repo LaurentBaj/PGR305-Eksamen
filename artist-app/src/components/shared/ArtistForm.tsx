@@ -13,10 +13,24 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState(image)
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let { name, value, files } = event.target;
+
+    switch (name) {
+      case "image":
+        if (files) {
+          artist.image = files[0].name
+          _setImage(files[0].name)
+        }
+        break;
+    }
+  };
+
 
   const handleForm = () => {
     artist.name = _name
     artist.description = _description
+    artist.image = _image
 
     if (action === "PUT") {
       ArtistService.updateArtist(artist as IArtist)
@@ -42,7 +56,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }
           <Col>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Default file input example</Form.Label>
-              <Form.Control name="image" type="file" />
+              <Form.Control name="image" onChange={handleChange} type="file" />
             </Form.Group>
           </Col>
         </Row>
