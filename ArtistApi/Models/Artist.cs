@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ArtistApi.Models
 {
-    public class Artist : IArtist 
+    public class Artist : IArtist
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -12,5 +12,6 @@ namespace ArtistApi.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+        public string genre { get; set; }
     }
 }

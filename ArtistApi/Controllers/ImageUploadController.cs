@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace ChocolateApi.Controllers
+namespace ArtistApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ImageUploadController : ControllerBase 
+    public class ImageUploadController : ControllerBase
     {
         private readonly IWebHostEnvironment _hosting;
         public ImageUploadController(IWebHostEnvironment hosting)
@@ -16,14 +16,16 @@ namespace ChocolateApi.Controllers
         }
         [HttpPost]
         [Route("[action]")]
-        public ActionResult SaveImage( IFormFile file )
+        public ActionResult SaveImage(IFormFile file)
         {
             string webRootPath = _hosting.WebRootPath;
-            string absolutePath = Path.Combine( $"{webRootPath}/images/{file.FileName}" );
+            string absolutePath = Path.Combine($"{webRootPath}/images/{file.FileName}");
 
-            try {
-                using( var fileStream = new FileStream( absolutePath, FileMode.Create ) ){
-                    file.CopyTo( fileStream );
+            try
+            {
+                using (var fileStream = new FileStream(absolutePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
                 }
                 return StatusCode(201);
             }

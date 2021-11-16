@@ -5,24 +5,22 @@ import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "./Genre";
 
-export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }) => {
-  const artist = { id, name, description, image }
+export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre }) => {
+  const artist = { id, name, description, image, genre }
   const history = useHistory()
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState(image)
+  const [_genre, _setGenre] = useState<Genre>(genre as Genre)
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let { name, value, files } = event.target;
-
-    switch (name) {
-      case "image":
-        if (files) {
-          artist.image = files[0].name
-          _setImage(files[0].name)
-        }
-        break;
+  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let { name, files } = event.target;
+    if (name === "image") {
+      if (files) {
+        artist.image = files[0].name
+        _setImage(files[0].name)
+      }
     }
   };
 
@@ -31,6 +29,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }
     artist.name = _name
     artist.description = _description
     artist.image = _image
+    artist.genre = _genre
 
     if (action === "PUT") {
       ArtistService.updateArtist(artist as IArtist)
@@ -56,7 +55,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }
           <Col>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Default file input example</Form.Label>
-              <Form.Control name="image" onChange={handleChange} type="file" />
+              <Form.Control name="image" onChange={handleImageChange} type="file" />
             </Form.Group>
           </Col>
         </Row>
@@ -68,7 +67,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image }
         <br></br>
         <Row>
           <Col>
-            <Form.Select name="genre">
+            <Form.Select value={_genre} onChange={e => _setGenre(e.target.value as Genre)} >
               {Object.keys(Genre).map((i) => (
                 <option>{i}</option>
               ))}

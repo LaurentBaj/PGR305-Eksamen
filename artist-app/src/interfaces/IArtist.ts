@@ -8,6 +8,5 @@ export interface IArtist {
   image?: string;
   dateOfBirth?: Date;
   genre?: Genre;
-  album?: IAlbum[];
   action?: string;
 }

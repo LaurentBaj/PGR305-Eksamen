@@ -17,6 +17,7 @@ export const EditArtist: FC = () => {
                 description={artist?.description as string}
                 image={artist?.image}
                 action={"PUT"}
+                genre={artist?.genre}
             />
         </div>
     )
