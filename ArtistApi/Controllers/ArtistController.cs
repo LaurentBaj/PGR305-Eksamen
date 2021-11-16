@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using ArtistApi.Models;
 using System.Collections.Generic;
 using ArtistApi.Services;
-using ArtistApi.Interfaces;
 
 namespace ArtistApi.Controllers
 {

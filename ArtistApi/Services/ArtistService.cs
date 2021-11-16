@@ -2,7 +2,6 @@ using MongoDB.Driver;
 using ArtistApi.Models;
 using System.Collections.Generic;
 using System.Linq;
-using ArtistApi.Interfaces;
 
 namespace ArtistApi.Services
 {
