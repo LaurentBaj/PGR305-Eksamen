@@ -3,15 +3,18 @@ import { useParams, useHistory } from "react-router-dom";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { ArtistService } from "../../services/ArtistService";
-import { Col, Image, Row, Button } from "react-bootstrap";
-
-
+import { Col, Image, Row, Button, Modal } from "react-bootstrap";
 
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { artists, } = useContext(ArtistContext) as ArtistContextType;
+  const { artists } = useContext(ArtistContext) as ArtistContextType;
   const [artist] = useState(artists.find((artist) => artist.id === id));
-  const history = useHistory()
+  const history = useHistory();
+
+  // modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // check if artists contains a image
   const containsImage = () => {
@@ -20,15 +23,32 @@ export const ArtistItemDetails: FC = () => {
       : `https://localhost:5001/images/user_placeholder.png`;
   };
 
-
   const deleteArtist = (id: string) => {
-    ArtistService.deleteArtist(id)
-    history.push("/artists")
-  }
+    ArtistService.deleteArtist(id);
+    history.push("/artists");
+  };
 
   return (
     <>
-      <Button onClick={() => deleteArtist(id)} variant="danger" >Delete Artist</Button>
+      <Button onClick={handleShow} variant="danger">
+        Delete Artist
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Deleting artist</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Wooow, are you sure you want to delete <b>{artist?.name}</b>?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={() => deleteArtist(id)}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Row className="m-5 text-center">
         <Col>
           <Image
@@ -44,13 +64,20 @@ export const ArtistItemDetails: FC = () => {
       </Row>
       <Row>
         <h2>Genre: {artist?.genre}</h2>
-        <p>Date of birth: <b>{artist?.dateOfBirth}</b></p>
+        <p>
+          Date of birth: <b>{artist?.dateOfBirth}</b>
+        </p>
       </Row>
       <Row>
         <h2>Albums</h2>
         <p>There are currently no albums. Want to add one?</p>
       </Row>
-      <Button onClick={() => history.push(`/artist-edit/${artist?.id}`)} variant="warning" >Edit Artist</Button>
+      <Button
+        onClick={() => history.push(`/artist-edit/${artist?.id}`)}
+        variant="warning"
+      >
+        Edit Artist
+      </Button>
     </>
   );
 };
