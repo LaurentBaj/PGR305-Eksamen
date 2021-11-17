@@ -4,6 +4,8 @@ import { Form, Row, Col } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "./Genre";
+import DatePicker from "react-datepicker";
+
 
 export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre, dateOfBirth }) => {
   const artist = { id, name, description, image, genre, dateOfBirth }
@@ -13,7 +15,8 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState(image)
   const [_genre, _setGenre] = useState<Genre>(genre as Genre)
-  const [_date, _setDate] = useState(dateOfBirth)
+  const [startDate, setStartDate] = useState(new Date());
+
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name, files } = event.target;
@@ -31,7 +34,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     artist.description = _description
     artist.image = _image
     artist.genre = _genre
-    artist.dateOfBirth = _date
+    artist.dateOfBirth = startDate
 
 
     if (action === "PUT") {
@@ -77,7 +80,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
             </Form.Select>
           </Col>
           <Col>
-            <Form.Control value={dateOfBirth?.toString()} onChange={() => _setDate(_date)} type="date" />
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date as Date)} />
           </Col>
         </Row>
         <button onClick={handleForm}>Edit</button>
