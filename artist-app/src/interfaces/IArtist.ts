@@ -6,5 +6,6 @@ export interface IArtist {
   description: string;
   image?: string;
   genre?: Genre;
+  dateOfBirth?: string;
   action?: string;
 }

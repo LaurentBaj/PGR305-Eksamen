@@ -4,18 +4,17 @@ import { Form, Row, Col } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "./Genre";
-import DatePicker from "react-datepicker";
 
 
-export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre }) => {
-  const artist = { id, name, description, image, genre }
+export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre, dateOfBirth }) => {
+  const artist = { id, name, description, image, genre, dateOfBirth }
   const history = useHistory()
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState(image)
   const [_genre, _setGenre] = useState<Genre>(genre as Genre)
-  const [startDate, setStartDate] = useState(new Date());
+  const [_date, _setDate] = useState(dateOfBirth)
 
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +33,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     artist.description = _description
     artist.image = _image
     artist.genre = _genre
-
+    artist.dateOfBirth = _date
 
     if (action === "PUT") {
       ArtistService.updateArtist(artist as IArtist)
@@ -77,6 +76,13 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
                 <option>{i}</option>
               ))}
             </Form.Select>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Control
+                value={_date} onChange={e => _setDate(e.target.value)} type="text"
+                placeholder={"Date of birth - ( dd/mm/yyyy )"} />
+            </Form.Group>
           </Col>
         </Row>
         <button onClick={handleForm}>Edit</button>

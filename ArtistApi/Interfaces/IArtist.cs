@@ -7,5 +7,6 @@ namespace ArtistApi.Interfaces
         string Description { get; set; }
         string Image { get; set; }
         string genre { get; set; }
+        string DateOfBirth { get; set; }
     }
 }

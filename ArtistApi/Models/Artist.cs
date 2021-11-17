@@ -13,5 +13,6 @@ namespace ArtistApi.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public string genre { get; set; }
+        public string DateOfBirth { get; set; }
     }
 }
