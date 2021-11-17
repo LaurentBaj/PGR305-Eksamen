@@ -7,9 +7,8 @@ import About from "../pages/About";
 import { ArtistDetails } from "../pages/ArtistDetails";
 import NavigationBar from "../components/shared/NavigationBar";
 import { NotFound } from "../pages/NotFound";
-import NewArtist from "../pages/NewArtist";
-import { EditArtistForm } from "../components/Artist/EditArtistForm";
-import { EditArtist } from "../components/Artist/EditArtist";
+import { EditArtist } from "../pages/EditArtist";
+import { NewArtist } from "../pages/NewArtist";
 
 const Routing: FC = () => {
   return (

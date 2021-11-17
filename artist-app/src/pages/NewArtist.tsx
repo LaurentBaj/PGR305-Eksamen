@@ -1,12 +1,13 @@
 import { FC } from "react";
-import ArtistForm from "../components/Artist/ArtistForm";
+import { ArtistForm } from "../components/shared/ArtistForm";
+import { Genre } from "../components/shared/Genre";
 
-const NewArtist: FC = () => {
+export const NewArtist: FC = () => {
   return (
     <>
-      <ArtistForm />
+      <h1>Create a new Artist</h1>
+      <ArtistForm name={""} description={""} image={""} action={"POST"} genre={Genre.Classic} dateOfBirth={""} />
     </>
   );
 };
 
-export default NewArtist;

@@ -43,6 +43,10 @@ export const ArtistItemDetails: FC = () => {
         <p>{artist?.description}</p>
       </Row>
       <Row>
+        <h2>Genre: {artist?.genre}</h2>
+        <p>Date of birth: <b>{artist?.dateOfBirth}</b></p>
+      </Row>
+      <Row>
         <h2>Albums</h2>
         <p>There are currently no albums. Want to add one?</p>
       </Row>
