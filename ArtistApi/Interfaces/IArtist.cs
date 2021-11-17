@@ -1,3 +1,5 @@
+using System;
+
 namespace ArtistApi.Interfaces
 {
     public interface IArtist
@@ -7,5 +9,6 @@ namespace ArtistApi.Interfaces
         string Description { get; set; }
         string Image { get; set; }
         string genre { get; set; }
+        DateTime dateOfBirth { get; set; }
     }
 }

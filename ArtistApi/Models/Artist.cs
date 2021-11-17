@@ -1,6 +1,7 @@
 using ArtistApi.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace ArtistApi.Models
 {
@@ -13,5 +14,6 @@ namespace ArtistApi.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public string genre { get; set; }
+        public DateTime dateOfBirth { get; set; }
     }
 }

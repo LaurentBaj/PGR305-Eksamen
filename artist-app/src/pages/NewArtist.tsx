@@ -6,7 +6,7 @@ export const NewArtist: FC = () => {
   return (
     <>
       <h1>Create a new Artist</h1>
-      <ArtistForm name={""} description={""} image={""} action={"POST"} genre={Genre.Classic} />
+      <ArtistForm name={""} description={""} image={""} action={"POST"} genre={Genre.Classic} dateOfBirth={new Date()} />
     </>
   );
 };

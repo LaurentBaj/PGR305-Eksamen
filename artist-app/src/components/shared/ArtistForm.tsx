@@ -5,14 +5,15 @@ import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "./Genre";
 
-export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre }) => {
-  const artist = { id, name, description, image, genre }
+export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre, dateOfBirth }) => {
+  const artist = { id, name, description, image, genre, dateOfBirth }
   const history = useHistory()
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState(image)
   const [_genre, _setGenre] = useState<Genre>(genre as Genre)
+  const [_date, _setDate] = useState(dateOfBirth)
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name, files } = event.target;
@@ -30,6 +31,8 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     artist.description = _description
     artist.image = _image
     artist.genre = _genre
+    artist.dateOfBirth = _date
+
 
     if (action === "PUT") {
       ArtistService.updateArtist(artist as IArtist)
@@ -74,7 +77,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
             </Form.Select>
           </Col>
           <Col>
-            <Form.Control type="date" name="date" placeholder="Date of birth" />
+            <Form.Control value={dateOfBirth?.toString()} onChange={() => _setDate(_date)} type="date" />
           </Col>
         </Row>
         <button onClick={handleForm}>Edit</button>
