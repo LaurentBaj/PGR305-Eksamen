@@ -7,8 +7,8 @@ import { Genre } from "./Genre";
 import DatePicker from "react-datepicker";
 
 
-export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre, dateOfBirth }) => {
-  const artist = { id, name, description, image, genre, dateOfBirth }
+export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre }) => {
+  const artist = { id, name, description, image, genre }
   const history = useHistory()
 
   const [_name, _setName] = useState(name)
@@ -34,7 +34,6 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     artist.description = _description
     artist.image = _image
     artist.genre = _genre
-    artist.dateOfBirth = startDate
 
 
     if (action === "PUT") {
@@ -78,9 +77,6 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
                 <option>{i}</option>
               ))}
             </Form.Select>
-          </Col>
-          <Col>
-            <DatePicker selected={startDate} onChange={(date) => setStartDate(date as Date)} />
           </Col>
         </Row>
         <button onClick={handleForm}>Edit</button>

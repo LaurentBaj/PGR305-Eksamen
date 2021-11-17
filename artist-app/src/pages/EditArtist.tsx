@@ -18,7 +18,6 @@ export const EditArtist: FC = () => {
                 image={artist?.image}
                 action={"PUT"}
                 genre={artist?.genre}
-                dateOfBirth={artist?.dateOfBirth}
             />
         </div>
     )
