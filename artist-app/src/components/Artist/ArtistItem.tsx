@@ -10,8 +10,13 @@ const ArtistItem: FC<IArtist> = ({ name, image }) => {
   };
 
   return (
-    <Card className={"layeredbox card"}>
-      <Card.Img variant="top" alt={name} src={containsImage()} />
+    <Card style={{ width: "18rem" }} className={"layeredbox card"}>
+      <Card.Img
+        style={{ objectFit: "cover", height: "12rem" }}
+        variant="top"
+        alt={name}
+        src={containsImage()}
+      />
       <Card.Body>
         <Card.Title style={{ color: "black" }} className={"text-center pt-2"}>
           {name}

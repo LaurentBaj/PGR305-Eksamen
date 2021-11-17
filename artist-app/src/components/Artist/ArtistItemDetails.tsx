@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { ArtistService } from "../../services/ArtistService";
-import { Col, Image, Row, Button, Modal } from "react-bootstrap";
+import { Col, Image, Row, Button, Modal, Stack } from "react-bootstrap";
 
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,9 +30,17 @@ export const ArtistItemDetails: FC = () => {
 
   return (
     <>
-      <Button onClick={handleShow} variant="danger">
-        Delete Artist
-      </Button>
+      <Stack className="mt-3" direction="horizontal" gap={2}>
+        <Button
+          onClick={() => history.push(`/artist-edit/${artist?.id}`)}
+          variant="warning"
+        >
+          Edit Artist
+        </Button>
+        <Button onClick={handleShow} variant="danger">
+          Delete Artist
+        </Button>
+      </Stack>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Deleting artist</Modal.Title>
@@ -72,12 +80,6 @@ export const ArtistItemDetails: FC = () => {
         <h2>Albums</h2>
         <p>There are currently no albums. Want to add one?</p>
       </Row>
-      <Button
-        onClick={() => history.push(`/artist-edit/${artist?.id}`)}
-        variant="warning"
-      >
-        Edit Artist
-      </Button>
     </>
   );
 };
