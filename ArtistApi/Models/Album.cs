@@ -12,6 +12,6 @@ namespace ArtistApi.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public List<string> Songs { get; set; }
-        public string Artist_Id { get; set; }
+        public string Artist_id { get; set; }
     }
 }

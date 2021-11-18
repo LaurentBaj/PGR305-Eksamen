@@ -4,6 +4,7 @@ import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { ArtistService } from "../../services/ArtistService";
 import { Col, Image, Row, Button, Modal, Stack } from "react-bootstrap";
+import { AlbumList } from "../Album/AlbumList";
 
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -80,6 +81,8 @@ export const ArtistItemDetails: FC = () => {
         <h2>Albums</h2>
         <p>There are currently no albums. Want to add one?</p>
       </Row>
+
+      <AlbumList id={id} name={artist?.name as string} description={artist?.description as string} />
     </>
   );
 };
