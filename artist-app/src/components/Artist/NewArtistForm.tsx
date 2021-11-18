@@ -1,21 +1,20 @@
 import { FC, ChangeEvent, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Col, Form, Row, Button } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 import { Genre } from "../shared/Genre";
 
 export const NewArtistForm: FC = () => {
 
-    const [artist, setNewArtist] = useState<IArtist>({ name: "", description: "", image: "", genre: Genre.Pop, dateOfBirth: "" })
+    const [artist, setNewArtist] = useState<IArtist>({ name: "", description: "", image: "", dateOfBirth: "" })
     const [newImage, setNewImage] = useState<File>()
-    const [genre, setGenre] = useState<Genre>()
+    const [genre, setGenre] = useState<Genre>(Genre.Classic)
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         let { name } = event.target
         console.log(name);
 
         let { value } = event.target
-        let genre = "Genre."
 
         switch (name) {
             case "name":
@@ -39,42 +38,92 @@ export const NewArtistForm: FC = () => {
 
     const postNewArtist = () => {
         setNewArtist({ ...artist, genre: genre })
-
-
-
         ArtistService.postNewArtist(artist, newImage as File)
     }
 
     return (
-        <section>
-            <div>
-                <label>Name</label>
-                <input name="name" onChange={handleChange} type="text" />
-            </div>
-            <div>
-                <label>Add Picture</label>
-                <input onChange={handleChange} name="image" type="file" />
-            </div>
-            <div>
-                <label>Description</label>
-                <input name="description" onChange={handleChange} type="text" />
-            </div>
-            <div>
-                <Form.Select onChange={() => handleChange}>
-                    {Object.keys(Genre).map((i) => (
-                        <option>{i}</option>
-                    ))}
-                </Form.Select>
-            </div>
-            <div>
+        <Form>
+            <Row>
+                <Col>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Artist Name: </Form.Label>
+                        <Form.Control name="name" onChange={handleChange} type="text" />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Add image: </Form.Label>
+                        <Form.Control name="image" onChange={handleChange} type="file" />
+                    </Form.Group>
+                </Col>
+            </Row>
+            <Row>
                 <Form.Group className="mb-3">
-                    <Form.Control
-                        value={genre} onChange={e => setGenre(e.target.value as Genre)} type="text"
-                        placeholder={"Date of birth - ( dd/mm/yyyy )"} />
+                    <Form.Label>Description: </Form.Label>
+                    <Form.Control name="description" onChange={handleChange} type="text" />
                 </Form.Group>
-            </div>
-            <input onClick={postNewArtist} type="button" value="Add artist" />
-        </section>
+            </Row>
+            <Row>
+                <Col>
+                    <Form.Select name="genre" onChange={() => handleChange}>
+                        {Object.keys(Genre).map((i) => (
+                            <option>{i}</option>
+                        ))}
+                    </Form.Select>
+                </Col>
+                <Col>
+                    <Form.Group className="mb-3">
+                        <Form.Control
+                            name="date" onChange={handleChange}
+                            placeholder={"Date of birth - ( dd/mm/yyyy )"} />
+                    </Form.Group>
+                </Col>
+            </Row>
+            <Button onClick={postNewArtist}>Submit</Button>
+        </Form>
     )
 }
 
+
+/*
+<Form>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Artist Name: </Form.Label>
+              <Form.Control value={_name} onChange={e => _setName(e.target.value)} type="text" />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Default file input example</Form.Label>
+              <Form.Control name="image" onChange={handleImageChange} type="file" />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Form.Group className="mb-3">
+          <Form.Label>Description</Form.Label>
+          <Form.Control value={_description} onChange={e => _setDescription(e.target.value)} as="textarea" rows={3}
+          />
+        </Form.Group>
+        <br></br>
+        <Row>
+          <Col>
+            <Form.Select value={_genre} onChange={e => _setGenre(e.target.value as Genre)} >
+              {Object.keys(Genre).map((i) => (
+                <option>{i}</option>
+              ))}
+            </Form.Select>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Control
+                value={_date} onChange={e => _setDate(e.target.value)} type="text"
+                placeholder={"Date of birth - ( dd/mm/yyyy )"} />
+            </Form.Group>
+          </Col>
+        </Row>
+        <button onClick={handleForm}>Edit</button>
+      </Form>
+
+*/
