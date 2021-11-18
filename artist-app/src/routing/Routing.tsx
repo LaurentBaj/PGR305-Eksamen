@@ -9,6 +9,7 @@ import NavigationBar from "../components/shared/NavigationBar";
 import { NotFound } from "../pages/NotFound";
 import { EditArtist } from "../pages/EditArtist";
 import { NewArtist } from "../pages/NewArtist";
+import { AlbumForm } from "../components/Album/AlbumForm";
 
 const Routing: FC = () => {
   return (
@@ -22,6 +23,7 @@ const Routing: FC = () => {
           <Route path="/newArtist" component={NewArtist} />
           <Route path={`/artist-details/:id`} component={ArtistDetails} />
           <Route path={`/artist-edit/:id`} component={EditArtist} />
+          <Route path={`/newAlbum/:id`} component={AlbumForm} />
           <Route component={NotFound} />
         </Switch>
       </Container>

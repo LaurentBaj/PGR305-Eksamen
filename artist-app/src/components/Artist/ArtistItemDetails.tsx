@@ -1,5 +1,5 @@
 import { FC, useContext, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
 import { ArtistService } from "../../services/ArtistService";
@@ -79,6 +79,7 @@ export const ArtistItemDetails: FC = () => {
       </Row>
 
       <AlbumList id={id} name={artist?.name as string} description={artist?.description as string} />
+      <Link to={`/newAlbum/${id}`}><Button>Add Album</Button></Link>
     </>
   );
 };
