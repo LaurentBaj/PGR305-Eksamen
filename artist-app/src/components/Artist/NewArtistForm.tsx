@@ -8,13 +8,14 @@ export const NewArtistForm: FC = () => {
 
     const [artist, setNewArtist] = useState<IArtist>({ name: "", description: "", image: "", genre: Genre.Pop, dateOfBirth: "" })
     const [newImage, setNewImage] = useState<File>()
-    const [genre, setGenre] = useState<Genre>(Genre.Pop)
+    const [genre, setGenre] = useState<Genre>()
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         let { name } = event.target
         console.log(name);
 
         let { value } = event.target
+        let genre = "Genre."
 
         switch (name) {
             case "name":
@@ -37,6 +38,10 @@ export const NewArtistForm: FC = () => {
     }
 
     const postNewArtist = () => {
+        setNewArtist({ ...artist, genre: genre })
+
+
+
         ArtistService.postNewArtist(artist, newImage as File)
     }
 
@@ -55,7 +60,7 @@ export const NewArtistForm: FC = () => {
                 <input name="description" onChange={handleChange} type="text" />
             </div>
             <div>
-                <Form.Select value={genre} onChange={e => setGenre(e.target.value as Genre)}>
+                <Form.Select onChange={() => handleChange}>
                     {Object.keys(Genre).map((i) => (
                         <option>{i}</option>
                     ))}
@@ -64,7 +69,7 @@ export const NewArtistForm: FC = () => {
             <div>
                 <Form.Group className="mb-3">
                     <Form.Control
-                        name="date" onChange={handleChange} type="text"
+                        value={genre} onChange={e => setGenre(e.target.value as Genre)} type="text"
                         placeholder={"Date of birth - ( dd/mm/yyyy )"} />
                 </Form.Group>
             </div>
