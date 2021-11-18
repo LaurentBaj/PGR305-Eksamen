@@ -10,7 +10,7 @@ export const NewArtistForm: FC = () => {
     description: "",
     image: "",
     dateOfBirth: "",
-    genre: "",
+    // genre: "",
   });
   const [newImage, setNewImage] = useState<File>();
 
@@ -34,9 +34,9 @@ export const NewArtistForm: FC = () => {
       case "date":
         setNewArtist({ ...artist, dateOfBirth: value });
         break;
-      case "genre":
-        setNewArtist({ ...artist, genre: value });
-        break;
+      // case "genre":
+      //   setNewArtist({ ...artist, genre: value });
+      //   break;
     }
   };
 
@@ -71,12 +71,12 @@ export const NewArtistForm: FC = () => {
         </Form.Group>
       </Row>
       <Row>
-        <Col>
-          <Form.Select onChange={() => handleChange}>
+        {/* <Col>
+          <Form.Select onChange={handleChange}>
             <option value="Classic">Classic</option>
             <option value="Pop">Pop</option>
           </Form.Select>
-        </Col>
+        </Col> */}
         <Col>
           <Form.Group className="mb-3">
             <Form.Control
