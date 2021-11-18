@@ -1,8 +1,9 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IAlbum } from "../../interfaces/IAlbum";
 import { AlbumService } from "../../services/AlbumService";
 import { useParams } from "react-router";
+import { log } from "console";
 
 
 
@@ -26,13 +27,22 @@ export const AlbumForm: FC = () => {
         setSong("")
     }
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let { name, value } = event.target;
+
+        switch (name) {
+            case "album_name":
+                setAlbumName(value)
+                setAlbum({ ...album, name: value });
+                break;
+            // case "song_name":
+            //     //setAlbum({...album, songs:  });
+            //     break;
+        }
+    };
+
     const postAlbum = () => {
-        setAlbum({ ...album, name: albumName })
-        setAlbum({ ...album, songs: songArray })
-        setAlbum({ ...album, artist_id: id })
-
-        console.log(album);
-
+        console.log(album)
         //AlbumService.postAlbum(album)
     }
 
@@ -44,13 +54,13 @@ export const AlbumForm: FC = () => {
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Album Name: </Form.Label>
-                            <Form.Control value={albumName} onChange={e => setAlbumName(e.target.value)} type="text" />
+                            <Form.Control name="album_name" onChange={handleChange} type="text" />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Form.Group className="mb-3">
                     <Form.Label>Song</Form.Label>
-                    <Form.Control value={song} onChange={e => setSong(e.target.value)} type="text" />
+                    <Form.Control name="song_name" onChange={handleChange} type="text" />
                     <Button onClick={handleSong}>Add Song</Button>
                     <br />
                     <Button onClick={postAlbum}>Save Album</Button>
