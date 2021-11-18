@@ -22,7 +22,7 @@ const ArtistList: FC = () => {
     return artists.map((artist: IArtist, key: number) => {
       return (
         <>
-          <Col className="mb-3" xs={12} sm={6} md={4} lg={3} key={key}>
+          <Col key={key}>
             <Link
               style={{ textDecoration: "none" }}
               to={`/artist-details/${artist.id}`}
@@ -41,7 +41,7 @@ const ArtistList: FC = () => {
     });
   };
 
-  return <Row>{createArtistList()}</Row>;
+  return <Row className="g-4">{createArtistList()}</Row>;
 };
 
 export default ArtistList;
