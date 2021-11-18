@@ -13,7 +13,6 @@ export const AlbumItem: FC<IAlbum> = ({ name, songs, artist_id }) => {
                     return <li key={key}>{s}</li>
                 })}
             </ul>
-            <h3>{artist_id}</h3>
         </>
     );
 };

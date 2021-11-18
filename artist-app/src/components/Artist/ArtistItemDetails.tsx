@@ -77,10 +77,6 @@ export const ArtistItemDetails: FC = () => {
           Date of birth: <b>{artist?.dateOfBirth}</b>
         </p>
       </Row>
-      <Row>
-        <h2>Albums</h2>
-        <p>There are currently no albums. Want to add one?</p>
-      </Row>
 
       <AlbumList id={id} name={artist?.name as string} description={artist?.description as string} />
     </>
