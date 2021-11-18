@@ -12,34 +12,32 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
-  const [_image, _setImage] = useState(image)
+  const [_image, _setImage] = useState<File>()
   const [_genre, _setGenre] = useState<Genre>(genre as Genre)
   const [_date, _setDate] = useState(dateOfBirth)
-
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name, files } = event.target;
     if (name === "image") {
       if (files) {
         artist.image = files[0].name
-        _setImage(files[0].name)
+        _setImage(files[0])
       }
     }
   };
 
-
   const handleForm = () => {
     artist.name = _name
     artist.description = _description
-    artist.image = _image
     artist.genre = _genre
     artist.dateOfBirth = _date
+    artist.image = _image as any
 
     if (action === "PUT") {
       ArtistService.updateArtist(artist as IArtist)
     }
     if (action === "POST") {
-      ArtistService.postNewArtist(artist as IArtist, image as any)
+      ArtistService.postNewArtist(artist as IArtist, _image as File)
     }
 
     history.push("/artists")
