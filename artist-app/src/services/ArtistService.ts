@@ -27,7 +27,9 @@ export const ArtistService = (function () {
     axios.delete(urlToArtistController.concat("/" + id))
   }
 
-  const updateArtist = (artist: IArtist) => {
+  const updateArtist = (artist: IArtist, image: File) => {
+    let formData = new FormData();
+    formData.append("file", image);
     axios.put(urlToArtistController.concat("/" + artist.id), artist)
   }
 

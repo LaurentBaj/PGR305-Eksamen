@@ -11,7 +11,8 @@ export const EditArtistForm: FC<IArtist> = ({ id, name, description, image, genr
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
-  const [_image, _setImage] = useState(image)
+  const [_image, _setImage] = useState<File>()
+  const [_img, _setImg] = useState("")
   const [_genre, _setGenre] = useState(genre)
   const [_date, _setDate] = useState(dateOfBirth)
 
@@ -19,8 +20,8 @@ export const EditArtistForm: FC<IArtist> = ({ id, name, description, image, genr
     let { name, files } = event.target;
     if (name === "image") {
       if (files) {
-        artist.image = files[0].name
-        _setImage(files[0].name)
+        _setImage(files[0])
+        _setImg(files[0].name)
       }
     }
   };
@@ -30,9 +31,9 @@ export const EditArtistForm: FC<IArtist> = ({ id, name, description, image, genr
     artist.description = _description
     artist.genre = _genre
     artist.dateOfBirth = _date
-    artist.image = _image
+    artist.image = _img
 
-    ArtistService.updateArtist(artist as IArtist)
+    ArtistService.updateArtist(artist, _image as File)
     history.push("/artists")
   }
 
