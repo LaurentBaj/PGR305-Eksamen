@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { Button } from "react-bootstrap";
-import { useHistory } from "react-router";
 import { IAlbum } from "../../interfaces/IAlbum";
 import { AlbumService } from "../../services/AlbumService";
-import { ArtistService } from "../../services/ArtistService";
+import { TrashFill } from "react-bootstrap-icons";
 
 export const AlbumItem: FC<IAlbum> = ({ id, name, songs, artist_id }) => {
   const deleteAlbum = (id: string) => {
@@ -13,8 +12,8 @@ export const AlbumItem: FC<IAlbum> = ({ id, name, songs, artist_id }) => {
   return (
     <>
       <h3>{name}</h3>
-      <Button onClick={() => deleteAlbum(id as string)} variant="danger">
-        Delete album
+      <Button onClick={() => deleteAlbum(id as string)} variant="text">
+        <TrashFill color="red" />
       </Button>
       <ul>
         {songs.map((s, key) => {
