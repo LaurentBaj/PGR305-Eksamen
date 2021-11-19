@@ -21,22 +21,19 @@ const ArtistList: FC = () => {
 
     return artists.map((artist: IArtist, key: number) => {
       return (
-        <>
-          <Col key={key}>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={`/artist-details/${artist.id}`}
-            >
-              <ArtistItem
-                key={key}
-                id={artist.id}
-                name={artist.name}
-                image={artist.image}
-                description={artist.description}
-              />
-            </Link>
-          </Col>
-        </>
+        <Col key={key}>
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`/artist-details/${artist.id}`}
+          >
+            <ArtistItem
+              id={artist.id}
+              name={artist.name}
+              image={artist.image}
+              description={artist.description}
+            />
+          </Link>
+        </Col>
       );
     });
   };

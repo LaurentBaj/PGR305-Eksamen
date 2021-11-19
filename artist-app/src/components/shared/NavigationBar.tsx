@@ -12,7 +12,7 @@ const NavigationBar: FC = () => {
             Home
           </Nav.Link>
           <Nav.Link as={Link} to="/artists">
-            Artist
+            Artists
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
             About
