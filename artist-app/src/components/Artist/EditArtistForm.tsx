@@ -3,16 +3,15 @@ import { useHistory } from "react-router";
 import { Form, Row, Col } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
-import { Genre } from "./Genre";
 
 
-export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, genre, dateOfBirth }) => {
+export const EditArtistForm: FC<IArtist> = ({ id, name, description, image, genre, dateOfBirth }) => {
   const artist = { id, name, description, image, genre, dateOfBirth }
   const history = useHistory()
 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
-  const [_image, _setImage] = useState<File>()
+  const [_image, _setImage] = useState(image)
   const [_genre, _setGenre] = useState(genre)
   const [_date, _setDate] = useState(dateOfBirth)
 
@@ -21,7 +20,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     if (name === "image") {
       if (files) {
         artist.image = files[0].name
-        _setImage(files[0])
+        _setImage(files[0].name)
       }
     }
   };
@@ -31,15 +30,9 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
     artist.description = _description
     artist.genre = _genre
     artist.dateOfBirth = _date
-    artist.image = _image as any
+    artist.image = _image
 
-    if (action === "PUT") {
-      ArtistService.updateArtist(artist as IArtist)
-    }
-    if (action === "POST") {
-      ArtistService.postNewArtist(artist as IArtist, _image as File)
-    }
-
+    ArtistService.updateArtist(artist as IArtist)
     history.push("/artists")
   }
 

@@ -2,7 +2,7 @@ import { FC, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { ArtistContext } from "../contexts/ArtistContext";
 import { ArtistContextType } from "../types/ArtistContextType";
-import { ArtistForm } from "../components/shared/ArtistForm";
+import { EditArtistForm } from "../components/Artist/EditArtistForm";
 
 export const EditArtist: FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -11,7 +11,7 @@ export const EditArtist: FC = () => {
 
     return (
         <div>
-            <ArtistForm
+            <EditArtistForm
                 id={artist?.id as string}
                 name={artist?.name as string}
                 description={artist?.description as string}
