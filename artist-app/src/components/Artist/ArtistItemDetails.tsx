@@ -32,6 +32,10 @@ export const ArtistItemDetails: FC = () => {
   return (
     <>
       <Stack className="mt-3" direction="horizontal" gap={2}>
+        <Link to={`/newAlbum/${id}`}>
+          <Button>Add Album</Button>
+        </Link>
+
         <Button
           onClick={() => history.push(`/artist-edit/${artist?.id}`)}
           variant="warning"
@@ -78,8 +82,11 @@ export const ArtistItemDetails: FC = () => {
         </p>
       </Row>
 
-      <AlbumList id={id} name={artist?.name as string} description={artist?.description as string} />
-      <Link to={`/newAlbum/${id}`}><Button>Add Album</Button></Link>
+      <AlbumList
+        id={id}
+        name={artist?.name as string}
+        description={artist?.description as string}
+      />
     </>
   );
 };
