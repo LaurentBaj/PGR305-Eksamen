@@ -17,6 +17,7 @@ export const AlbumList: FC<IArtist> = ({ id }) => {
           return (
             <AlbumItem
               key={key}
+              id={a.id}
               name={a.name}
               songs={a.songs}
               artist_id={id as string}
