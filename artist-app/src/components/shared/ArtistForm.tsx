@@ -13,7 +13,7 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState<File>()
-  const [_genre, _setGenre] = useState<Genre>(genre as Genre)
+  const [_genre, _setGenre] = useState(genre)
   const [_date, _setDate] = useState(dateOfBirth)
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -69,11 +69,15 @@ export const ArtistForm: FC<IArtist> = ({ id, name, description, action, image, 
         <br></br>
         <Row>
           <Col>
-            <Form.Select value={_genre} onChange={e => _setGenre(e.target.value as Genre)} >
-              {Object.keys(Genre).map((i) => (
-                <option>{i}</option>
-              ))}
-            </Form.Select>
+            <Form.Group as={Col} className="mb-3">
+              <Form.Label>Genre: </Form.Label>
+              <Form.Control
+                value={_genre}
+                onChange={e => _setGenre(e.target.value)}
+                type="text"
+                placeholder="Rock, Pop, Classic..."
+              />
+            </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
