@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { Form, Button, Stack } from "react-bootstrap";
 import { IAlbum } from "../../interfaces/IAlbum";
 import { useParams } from "react-router";
+import { AlbumService } from "../../services/AlbumService";
 
 export const AlbumForm: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,11 +21,12 @@ export const AlbumForm: FC = () => {
   };
 
   const postAlbum = () => {
-    // den her og logg skjer på likt, blir derfor ikke sendt med på første trykk
-    //setAlbum({name: albumName, songs: songArray, artist_id: id})
+    console.log(songArray);
+    // blir ikke satt før etter første trykk
+    setAlbum({ name: albumName, artist_id: id, songs: songArray });
 
-    console.log(album);
-    //AlbumService.postAlbum(album)
+    //console.log(album);
+    AlbumService.postAlbum(album);
   };
 
   return (

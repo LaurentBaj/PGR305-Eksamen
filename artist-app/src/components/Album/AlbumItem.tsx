@@ -11,10 +11,13 @@ export const AlbumItem: FC<IAlbum> = ({ id, name, songs, artist_id }) => {
 
   return (
     <>
-      <h3>{name}</h3>
-      <Button onClick={() => deleteAlbum(id as string)} variant="text">
-        <TrashFill color="red" />
-      </Button>
+      <h3>
+        {name}
+        <Button onClick={() => deleteAlbum(id as string)} variant="text">
+          <TrashFill color="red" />
+        </Button>
+      </h3>
+
       <ul>
         {songs.map((s, key) => {
           return <li key={key}>{s}</li>;
