@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
@@ -8,7 +8,13 @@ import { Link } from "react-router-dom";
 import LoadingSpinner from "../shared/LoadingSpinner";
 
 const ArtistList: FC = () => {
-  const { artists, loading } = useContext(ArtistContext) as ArtistContextType;
+  const { artists, loading, getArtists } = useContext(
+    ArtistContext
+  ) as ArtistContextType;
+
+  useEffect(() => {
+    getArtists();
+  }, []);
 
   const createArtistList = () => {
     if (loading) {
