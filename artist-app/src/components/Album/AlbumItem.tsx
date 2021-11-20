@@ -7,6 +7,7 @@ import { TrashFill } from "react-bootstrap-icons";
 export const AlbumItem: FC<IAlbum> = ({ id, name, songs }) => {
   const deleteAlbum = (id: string) => {
     AlbumService.deleteAlbum(id);
+    setShow(false);
   };
 
   // modal
