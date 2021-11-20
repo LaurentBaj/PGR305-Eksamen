@@ -11,9 +11,7 @@ const Artist: FC = () => {
       <Link to="/newartist">
         <Button variant="primary">New Artist</Button>
       </Link>
-      <ArtistProvider>
-        <ArtistList />
-      </ArtistProvider>
+      <ArtistList />
     </>
   );
 };

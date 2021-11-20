@@ -13,8 +13,13 @@ export const AlbumService = (function () {
     axios.post(urlToAlbumController, album);
   };
 
+  const deleteAlbum = (id: string) => {
+    axios.delete(urlToAlbumController.concat("/" + id));
+  };
+
   return {
     getAll,
     postAlbum,
+    deleteAlbum,
   };
 })();

@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
-import { Form, Button, Stack } from "react-bootstrap";
+import { Form, Button, Stack, Modal } from "react-bootstrap";
 import { IAlbum } from "../../interfaces/IAlbum";
 import { useParams } from "react-router";
+import { AlbumService } from "../../services/AlbumService";
+import { Link } from "react-router-dom";
 
 export const AlbumForm: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,11 +22,24 @@ export const AlbumForm: FC = () => {
   };
 
   const postAlbum = () => {
-    // den her og logg skjer på likt, blir derfor ikke sendt med på første trykk
-    //setAlbum({name: albumName, songs: songArray, artist_id: id})
+    AlbumService.postAlbum(album);
+    setSong("");
+    setAlbumName("");
+    setsongArray([]);
+  };
 
-    console.log(album);
-    //AlbumService.postAlbum(album)
+  // modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    AlbumService.postAlbum(album);
+    setSong("");
+    setAlbumName("");
+    setsongArray([]);
+    setShow(false);
+  };
+  const handleShow = () => {
+    setAlbum({ name: albumName, artist_id: id, songs: songArray });
+    setShow(true);
   };
 
   return (
@@ -34,18 +49,23 @@ export const AlbumForm: FC = () => {
         <Form.Group className="mb-3">
           <Form.Label>Album Name</Form.Label>
           <Form.Control
+            value={albumName}
             onChange={(e) => setAlbumName(e.target.value)}
             type="text"
           />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Song:</Form.Label>
-          <Form.Control onChange={(e) => setSong(e.target.value)} type="text" />
+          <Form.Control
+            value={song}
+            onChange={(e) => setSong(e.target.value)}
+            type="text"
+          />
         </Form.Group>
 
         <Stack className="mt-3" direction="horizontal" gap={2}>
           <Button onClick={handleSong}>Add Song</Button>
-          <Button onClick={postAlbum}>Save Album</Button>
+          <Button onClick={handleShow}>Save Album</Button>
         </Stack>
 
         <h3>{albumName}</h3>
@@ -55,6 +75,23 @@ export const AlbumForm: FC = () => {
           })}
         </ul>
       </Form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Album</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Do you want to add another album?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={handleClose}>
+            Yes
+          </Button>
+          <Link to={`/artist-details/${id}`}>
+            <Button variant="danger" onClick={postAlbum}>
+              No
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

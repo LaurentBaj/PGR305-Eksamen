@@ -12,10 +12,10 @@ export const ArtistProvider: FC = ({ children }) => {
   const [albums, setAlbums] = useState<IAlbum[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getArtists();
-    getAlbums()
-  }, []);
+  // useEffect(() => {
+  //   getArtists();
+  //   getAlbums();
+  // }, []);
 
   const getArtists = async () => {
     const _artists = await ArtistService.getAll();
@@ -24,13 +24,15 @@ export const ArtistProvider: FC = ({ children }) => {
   };
 
   const getAlbums = async () => {
-    const _albums = await AlbumService.getAll()
-    setAlbums(_albums)
-  }
+    const _albums = await AlbumService.getAll();
+    setAlbums(_albums);
+  };
 
   return (
     <>
-      <ArtistContext.Provider value={{ artists, loading, albums }}>
+      <ArtistContext.Provider
+        value={{ artists, loading, albums, getArtists, getAlbums }}
+      >
         {children}
       </ArtistContext.Provider>
     </>
