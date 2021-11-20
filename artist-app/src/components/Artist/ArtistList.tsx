@@ -1,5 +1,5 @@
-import { FC, useContext, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { FC, useContext, useEffect, useState } from "react";
+import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
@@ -11,6 +11,20 @@ const ArtistList: FC = () => {
   const { artists, loading, getArtists } = useContext(
     ArtistContext
   ) as ArtistContextType;
+
+  // https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
+  const [q, setQ] = useState("");
+  const [searchParam] = useState(["name"]);
+
+  function search(items: any) {
+    return items.filter((item: any) => {
+      return searchParam.some((newItem) => {
+        return (
+          item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+        );
+      });
+    });
+  }
 
   useEffect(() => {
     getArtists();
@@ -25,7 +39,7 @@ const ArtistList: FC = () => {
       );
     }
 
-    return artists.map((artist: IArtist, key: number) => {
+    return search(artists).map((artist: IArtist, key: number) => {
       return (
         <Col key={key}>
           <Link
@@ -44,7 +58,23 @@ const ArtistList: FC = () => {
     });
   };
 
-  return <Row className="g-4">{createArtistList()}</Row>;
+  return (
+    <>
+      <InputGroup className="mb-3">
+        <FormControl
+          type="search"
+          name="search-form"
+          id="search-form"
+          className="search-input"
+          placeholder="Search for..."
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+        />
+      </InputGroup>
+
+      <Row className="g-4">{createArtistList()}</Row>
+    </>
+  );
 };
 
 export default ArtistList;
