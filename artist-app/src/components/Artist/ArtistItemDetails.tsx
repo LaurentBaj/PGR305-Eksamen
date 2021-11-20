@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { ArtistContext } from "../../contexts/ArtistContext";
 import { ArtistContextType } from "../../types/ArtistContextType";
@@ -8,9 +8,13 @@ import { AlbumList } from "../Album/AlbumList";
 
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { artists } = useContext(ArtistContext) as ArtistContextType;
+  const { artists, getAlbums } = useContext(ArtistContext) as ArtistContextType;
   const [artist] = useState(artists.find((artist) => artist.id === id));
   const history = useHistory();
+
+  useEffect(() => {
+    getAlbums();
+  }, []);
 
   // modal
   const [show, setShow] = useState(false);

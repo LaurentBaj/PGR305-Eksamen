@@ -6,4 +6,5 @@ export type ArtistContextType = {
   loading: boolean;
   albums: IAlbum[];
   getArtists: () => void;
+  getAlbums: () => void;
 };

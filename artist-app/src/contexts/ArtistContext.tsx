@@ -30,7 +30,9 @@ export const ArtistProvider: FC = ({ children }) => {
 
   return (
     <>
-      <ArtistContext.Provider value={{ artists, loading, albums, getArtists }}>
+      <ArtistContext.Provider
+        value={{ artists, loading, albums, getArtists, getAlbums }}
+      >
         {children}
       </ArtistContext.Provider>
     </>
