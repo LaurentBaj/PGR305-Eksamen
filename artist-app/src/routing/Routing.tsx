@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Home from "../pages/Home";
 import Artist from "../pages/Artist";
-import About from "../pages/About";
 import { ArtistDetails } from "../pages/ArtistDetails";
 import NavigationBar from "../components/shared/NavigationBar";
 import { NotFound } from "../pages/NotFound";
@@ -18,7 +17,6 @@ const Routing: FC = () => {
       <Container>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
           <Route path="/artists" component={Artist} />
           <Route path="/newArtist" component={NewArtist} />
           <Route path={`/artist-details/:id`} component={ArtistDetails} />
