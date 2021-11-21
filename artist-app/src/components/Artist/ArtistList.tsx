@@ -12,6 +12,10 @@ const ArtistList: FC = () => {
     ArtistContext
   ) as ArtistContextType;
 
+  useEffect(() => {
+    getArtists();
+  }, []);
+
   // https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
   const [q, setQ] = useState("");
   const [searchParam] = useState(["name"]);
@@ -25,10 +29,6 @@ const ArtistList: FC = () => {
       });
     });
   }
-
-  useEffect(() => {
-    getArtists();
-  }, []);
 
   const createArtistList = () => {
     if (loading) {

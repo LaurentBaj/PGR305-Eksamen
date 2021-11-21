@@ -12,10 +12,6 @@ export const ArtistItemDetails: FC = () => {
   const [artist] = useState(artists.find((artist) => artist.id === id));
   const history = useHistory();
 
-  useEffect(() => {
-    getAlbums();
-  }, []);
-
   // modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
