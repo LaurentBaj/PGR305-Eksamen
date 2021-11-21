@@ -7,9 +7,7 @@ const Home: FC = () => {
     <>
       <Row>
         <Col className="text-center mt-5">
-          <h3>
-            Welcome to Artist<span style={{ color: "orange" }}>Hub</span>
-          </h3>
+          <h3>Welcome to Cloud Artist</h3>
           <p>Save all your favourite artists and their albums in one place</p>
         </Col>
       </Row>

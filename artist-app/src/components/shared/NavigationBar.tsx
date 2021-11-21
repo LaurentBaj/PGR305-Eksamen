@@ -6,7 +6,7 @@ const NavigationBar: FC = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>Artist Hub</Navbar.Brand>
+        <Navbar.Brand>Cloud Artist</Navbar.Brand>
         <Nav>
           <Nav.Link as={Link} to="/">
             Home

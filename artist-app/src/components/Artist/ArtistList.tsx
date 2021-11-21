@@ -1,5 +1,12 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  InputGroup,
+  FormControl,
+  Button,
+  Stack,
+} from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
@@ -60,17 +67,24 @@ const ArtistList: FC = () => {
 
   return (
     <>
-      <InputGroup className="mb-3">
-        <FormControl
-          type="search"
-          name="search-form"
-          id="search-form"
-          className="search-input"
-          placeholder="Search for..."
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-        />
-      </InputGroup>
+      <Row className="m-3">
+        <Link to="/newartist">
+          <Button variant="primary">New Artist</Button>
+        </Link>
+      </Row>
+      <Row className="m-3">
+        <InputGroup>
+          <FormControl
+            type="search"
+            name="search-form"
+            id="search-form"
+            className="search-input"
+            placeholder="Search for..."
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+        </InputGroup>
+      </Row>
 
       <Row className="g-4">{createArtistList()}</Row>
     </>
