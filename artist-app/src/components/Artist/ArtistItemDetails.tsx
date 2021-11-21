@@ -78,10 +78,10 @@ export const ArtistItemDetails: FC = () => {
       </Row>
       <Row>
         <Col className={"text-center"}>
-          <h3>Genre: <span style={{ color: "#B91646" }}>{artist?.genre}</span></h3>
+          <h3>Genre: <span style={{ color: "#0d6efd" }}>{artist?.genre}</span></h3>
         </Col>
         <Col>
-          <h3>Date of birth: <span style={{ color: "#B91646" }}>{artist?.dateOfBirth}</span></h3>
+          <h3>Date of birth: <span style={{ color: "#0d6efd" }}>{artist?.dateOfBirth}</span></h3>
         </Col>
       </Row>
 

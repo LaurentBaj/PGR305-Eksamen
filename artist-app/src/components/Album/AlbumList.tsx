@@ -12,7 +12,7 @@ export const AlbumList: FC<IArtist> = ({ id }) => {
 
   return (
     <>
-      <h2 style={{ color: "#6166B3" }} className="mt-5">Albums</h2>
+      <h2 style={{ color: "#0d6efd" }} className="mt-5">Albums</h2>
       {album.length > 0 ? (
         album.map((a: IAlbum, key: number) => {
           return (
