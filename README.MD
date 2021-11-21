@@ -35,6 +35,13 @@ Steps:
  - When your node-modules are finished installing you can then run ```npm start``` which will display the website
 
 
+## Sources
+Sources are marked with a comment. Otherwise, the sources are from lecture notes.
+
+## Bugs
+- When adding artist and album, they do not always reload properly
+- When edeting an artist you need to add image from wwwroot-folder (or else the artist image is null)
+- When updating album. The image file can only be changed to an existing image in /wwwroot folder.
 
  
 

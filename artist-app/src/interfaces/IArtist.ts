@@ -1,5 +1,3 @@
-import { Genre } from "../components/shared/Genre";
-
 export interface IArtist {
   id?: string;
   name: string;
@@ -7,5 +5,4 @@ export interface IArtist {
   image?: string;
   genre?: string;
   dateOfBirth?: string;
-  action?: string;
 }
