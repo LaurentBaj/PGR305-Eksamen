@@ -23,7 +23,7 @@ const ArtistList: FC = () => {
     getArtists();
   }, []);
 
-  // https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
+  // Code is taken from: https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
   const [q, setQ] = useState("");
   const [searchParam] = useState(["name", "genre"]);
 
