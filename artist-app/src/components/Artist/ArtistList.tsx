@@ -25,7 +25,7 @@ const ArtistList: FC = () => {
 
   // https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
   const [q, setQ] = useState("");
-  const [searchParam] = useState(["name"]);
+  const [searchParam] = useState(["name", "genre"]);
 
   function search(items: any) {
     return items.filter((item: any) => {
@@ -79,7 +79,7 @@ const ArtistList: FC = () => {
             name="search-form"
             id="search-form"
             className="search-input"
-            placeholder="Search for..."
+            placeholder="Search by name or genre .."
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
