@@ -77,7 +77,7 @@ export const ArtistItemDetails: FC = () => {
         <p>{artist?.description}</p>
       </Row>
       <Row>
-        <Col>
+        <Col className={"text-center"}>
           <h3>Genre: <span style={{ color: "#B91646" }}>{artist?.genre}</span></h3>
         </Col>
         <Col>
@@ -85,11 +85,13 @@ export const ArtistItemDetails: FC = () => {
         </Col>
       </Row>
 
-      <AlbumList
-        id={id}
-        name={artist?.name as string}
-        description={artist?.description as string}
-      />
+      <Row className="g-4">
+        <AlbumList
+          id={id}
+          name={artist?.name as string}
+          description={artist?.description as string}
+        />
+      </Row>
     </>
   );
 };
