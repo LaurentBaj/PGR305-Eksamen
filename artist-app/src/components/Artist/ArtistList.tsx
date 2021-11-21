@@ -1,11 +1,10 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 import {
   Col,
   Row,
   InputGroup,
   FormControl,
-  Button,
-  Stack,
+  Button
 } from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
@@ -15,13 +14,9 @@ import { Link } from "react-router-dom";
 import LoadingSpinner from "../shared/LoadingSpinner";
 
 const ArtistList: FC = () => {
-  const { artists, loading, getArtists } = useContext(
+  const { artists, loading } = useContext(
     ArtistContext
   ) as ArtistContextType;
-
-  useEffect(() => {
-    getArtists();
-  }, []);
 
   // Code is taken from: https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
   const [q, setQ] = useState("");
