@@ -1,5 +1,6 @@
 import { FC, ChangeEvent, useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
+import { useHistory } from "react-router";
 import { IArtist } from "../../interfaces/IArtist";
 import { ArtistService } from "../../services/ArtistService";
 
@@ -12,6 +13,7 @@ export const NewArtistForm: FC = () => {
     genre: "",
   });
   const [newImage, setNewImage] = useState<File>();
+  const history = useHistory()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name, value } = event.target;
@@ -41,6 +43,7 @@ export const NewArtistForm: FC = () => {
 
   const postNewArtist = () => {
     ArtistService.postNewArtist(artist, newImage as File);
+    history.push("/artists")
   };
 
   return (

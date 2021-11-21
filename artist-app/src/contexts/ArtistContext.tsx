@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, createContext } from "react";
+import { FC, useState, createContext } from "react";
 import { IArtist } from "../interfaces/IArtist";
 import { ArtistContextType } from "../types/ArtistContextType";
 import { ArtistService } from "../services/ArtistService";
