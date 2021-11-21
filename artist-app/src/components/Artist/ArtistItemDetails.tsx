@@ -6,6 +6,7 @@ import { ArtistService } from "../../services/ArtistService";
 import { Col, Image, Row, Button, Modal, Stack } from "react-bootstrap";
 import { AlbumList } from "../Album/AlbumList";
 
+
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { artists, getAlbums } = useContext(ArtistContext) as ArtistContextType;
@@ -71,15 +72,17 @@ export const ArtistItemDetails: FC = () => {
           />
         </Col>
       </Row>
-      <Row>
+      <Row className={"text-center"}>
         <h1>{artist?.name}</h1>
         <p>{artist?.description}</p>
       </Row>
       <Row>
-        <h2>Genre: {artist?.genre}</h2>
-        <p>
-          Date of birth: <b>{artist?.dateOfBirth}</b>
-        </p>
+        <Col>
+          <h3>Genre: <span style={{ color: "#B91646" }}>{artist?.genre}</span></h3>
+        </Col>
+        <Col>
+          <h3>Date of birth: <span style={{ color: "#B91646" }}>{artist?.dateOfBirth}</span></h3>
+        </Col>
       </Row>
 
       <AlbumList
