@@ -1,4 +1,4 @@
-import { FC, useState, createContext } from "react";
+import { FC, useState, createContext, useEffect } from "react";
 import { IArtist } from "../interfaces/IArtist";
 import { ArtistContextType } from "../types/ArtistContextType";
 import { ArtistService } from "../services/ArtistService";
@@ -12,10 +12,10 @@ export const ArtistProvider: FC = ({ children }) => {
   const [albums, setAlbums] = useState<IAlbum[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   getArtists();
-  //   getAlbums();
-  // }, []);
+  useEffect(() => {
+    getArtists();
+    getAlbums();
+  }, []);
 
   const getArtists = async () => {
     const _artists = await ArtistService.getAll();

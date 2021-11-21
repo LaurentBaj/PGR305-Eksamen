@@ -6,15 +6,12 @@ import { ArtistService } from "../../services/ArtistService";
 import { Col, Image, Row, Button, Modal, Stack } from "react-bootstrap";
 import { AlbumList } from "../Album/AlbumList";
 
+
 export const ArtistItemDetails: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { artists, getAlbums } = useContext(ArtistContext) as ArtistContextType;
   const [artist] = useState(artists.find((artist) => artist.id === id));
   const history = useHistory();
-
-  useEffect(() => {
-    getAlbums();
-  }, []);
 
   // modal
   const [show, setShow] = useState(false);
@@ -75,22 +72,26 @@ export const ArtistItemDetails: FC = () => {
           />
         </Col>
       </Row>
-      <Row>
+      <Row className={"text-center"}>
         <h1>{artist?.name}</h1>
         <p>{artist?.description}</p>
       </Row>
       <Row>
-        <h2>Genre: {artist?.genre}</h2>
-        <p>
-          Date of birth: <b>{artist?.dateOfBirth}</b>
-        </p>
+        <Col className={"text-center"}>
+          <h3>Genre: <span style={{ color: "#0d6efd" }}>{artist?.genre}</span></h3>
+        </Col>
+        <Col>
+          <h3>Date of birth: <span style={{ color: "#0d6efd" }}>{artist?.dateOfBirth}</span></h3>
+        </Col>
       </Row>
 
-      <AlbumList
-        id={id}
-        name={artist?.name as string}
-        description={artist?.description as string}
-      />
+      <Row className="g-4">
+        <AlbumList
+          id={id}
+          name={artist?.name as string}
+          description={artist?.description as string}
+        />
+      </Row>
     </>
   );
 };

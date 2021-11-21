@@ -17,12 +17,12 @@ export const AlbumItem: FC<IAlbum> = ({ id, name, songs }) => {
 
   return (
     <>
-      <h3>
+      <h5>
         {name}
         <Button onClick={handleShow} variant="text">
           <TrashFill color="red" />
         </Button>
-      </h3>
+      </h5>
 
       <ul>
         {songs.map((s, key) => {

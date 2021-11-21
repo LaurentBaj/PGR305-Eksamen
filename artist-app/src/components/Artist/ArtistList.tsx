@@ -1,5 +1,12 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  InputGroup,
+  FormControl,
+  Button,
+  Stack,
+} from "react-bootstrap";
 import { IArtist } from "../../interfaces/IArtist";
 import ArtistItem from "./ArtistItem";
 import { ArtistContext } from "../../contexts/ArtistContext";
@@ -12,9 +19,13 @@ const ArtistList: FC = () => {
     ArtistContext
   ) as ArtistContextType;
 
-  // https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
+  useEffect(() => {
+    getArtists();
+  }, []);
+
+  // Code is taken from: https://www.freecodecamp.org/news/search-and-filter-component-in-reactjs/
   const [q, setQ] = useState("");
-  const [searchParam] = useState(["name"]);
+  const [searchParam] = useState(["name", "genre"]);
 
   function search(items: any) {
     return items.filter((item: any) => {
@@ -25,10 +36,6 @@ const ArtistList: FC = () => {
       });
     });
   }
-
-  useEffect(() => {
-    getArtists();
-  }, []);
 
   const createArtistList = () => {
     if (loading) {
@@ -60,17 +67,24 @@ const ArtistList: FC = () => {
 
   return (
     <>
-      <InputGroup className="mb-3">
-        <FormControl
-          type="search"
-          name="search-form"
-          id="search-form"
-          className="search-input"
-          placeholder="Search for..."
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-        />
-      </InputGroup>
+      <Row className="m-3">
+        <Link to="/newartist">
+          <Button variant="primary">New Artist</Button>
+        </Link>
+      </Row>
+      <Row className="m-3">
+        <InputGroup>
+          <FormControl
+            type="search"
+            name="search-form"
+            id="search-form"
+            className="search-input"
+            placeholder="Search by name or genre .."
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+        </InputGroup>
+      </Row>
 
       <Row className="g-4">{createArtistList()}</Row>
     </>
