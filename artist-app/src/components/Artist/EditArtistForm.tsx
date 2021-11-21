@@ -12,7 +12,7 @@ export const EditArtistForm: FC<IArtist> = ({ id, name, description, image, genr
   const [_name, _setName] = useState(name)
   const [_description, _setDescription] = useState(description)
   const [_image, _setImage] = useState<File>()
-  const [_img, _setImg] = useState("")
+  const [_img, _setImg] = useState(genre)
   const [_genre, _setGenre] = useState(genre)
   const [_date, _setDate] = useState(dateOfBirth)
 
